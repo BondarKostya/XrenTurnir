@@ -19,16 +19,16 @@ namespace ExcelLibrary
         public double Weight { get; set; }
         public double kWilis { get; set; }
 
-        public int Prised { get; set; }
-        public int Jym { get; set; }
+        public double Prised { get; set; }
+        public double Jym { get; set; }
         public string Alpha { get; set; }   //WHAT THE FUCK??
-        public int Taga { get; set; }
+        public double Taga { get; set; }
 
-        public int Summ { get; set; }
+        public double Summ { get; set; }
         public int Place { get; set; }
         public bool NormFlag { get; set; }
-        public int SummKU { get; set; }
-        public int Points { get; set; }
+        public double SummKU { get; set; }
+        public double Points { get; set; }
         public string Treners { get; set; }
 
         public Data()
@@ -58,7 +58,7 @@ namespace ExcelLibrary
         {
             List<string> result = new List<string>(20);
 
-            //result.Add(Number.ToString());
+            result.Add(Number.ToString());
             result.Add(Name);
             result.Add(Birthday);
             result.Add(Level);
