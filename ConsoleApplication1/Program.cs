@@ -32,9 +32,13 @@ namespace ConsoleApplication1
             data.Place = 1;
             data.Club = "NaVi";
             data.Assotiation = "LoL";
+            data.Number = 51;
+            data.Weight = 73.6;
             values.Add(data);
 
             values.ToExcel("Test");
+
+            Engine.GetData("D:\\test.xlsx");
         }
     }
 }
