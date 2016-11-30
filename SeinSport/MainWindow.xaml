@@ -10,8 +10,8 @@
     <TabControl TabStripPlacement="Bottom" x:Name="tabControl" HorizontalAlignment="Left" Height="500" Margin="94,35,10,10" VerticalAlignment="Top" Width="435" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
         <TabItem Header="Муж">
             <ScrollViewer>
-                <localGrids:ParticipantGrid x:Name="mainGrid" Background="#FFE5E5E5" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
-                </localGrids:ParticipantGrid>
+                <localGrids:CategoryGrid x:Name="mainGrid" Background="#FFE5E5E5" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
+                </localGrids:CategoryGrid>
             </ScrollViewer>
         </TabItem>
         <TabItem Header="Жен">

@@ -23,12 +23,6 @@ namespace SeinSport
         public MainWindow()
         {
             InitializeComponent();
-            mainGrid.NumberOfRows = 5;
-            mainGrid.setSectionMargin(new Thickness(15, 10, 15, 30));
-
-            mainGrid.setupRow(0, 10);
-            mainGrid.setupRow(1, 5);
-            mainGrid.setupRow(2, 2);
 
         }
 
