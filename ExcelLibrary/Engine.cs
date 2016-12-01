@@ -181,7 +181,7 @@ namespace ExcelLibrary
                 human.Points = temp;
 
                 tempCell = tempCell.CellRight();
-                human.Treners = tempCell.Value.ToString();
+                human.Trainers = tempCell.Value.ToString();
                 
 
                 if (human.Name != string.Empty)

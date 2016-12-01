@@ -29,7 +29,7 @@ namespace ExcelLibrary
         public bool NormFlag { get; set; }
         public double SummKU { get; set; }
         public double Points { get; set; }
-        public string Treners { get; set; }
+        public string Trainers { get; set; }
 
         public Data()
         {
@@ -51,7 +51,7 @@ namespace ExcelLibrary
             Place = 0;
             NormFlag = false;
             Points = 0;
-            Treners = string.Empty;
+            Trainers = string.Empty;
         }
 
         public List<string> ToStringList()
@@ -76,7 +76,7 @@ namespace ExcelLibrary
             result.Add(Place.ToString());
             result.Add(NormFlag.ToString());
             result.Add(Points.ToString());
-            result.Add(Treners);
+            result.Add(Trainers);
 
             return result;
         }
