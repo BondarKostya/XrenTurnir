@@ -8,6 +8,105 @@ namespace ExcelLibrary
 {
     public class Data
     {
+        public const int Low = 60;
+        public const int Medium = 80;
+        public const int Hard = 100;
+        public const int TryHard = 150;
+
+        private double _p1;
+        private double _p2;
+        private double _p3;
+
+        private double _j1;
+        private double _j2;
+        private double _j3;
+
+        private double _t1;
+        private double _t2;
+        private double _t3;
+
+        private void Compile(char c)
+        {
+            switch (c)
+            {
+                case 'p':
+                    {
+                        Prised = string.Format("{0}/{1}/{2}", _p1, _p2, _p3);
+                        break;
+                    }
+                case 'j':
+                    {
+                        Jym = string.Format("{0}/{1}/{2}", _j1, _j2, _j3);
+                        break;
+                    }
+                case 't':
+                    {
+                        Taga = string.Format("{0}/{1}/{2}", _t1, _t2, _t3);
+                        break;
+                    }
+            }
+                
+        }
+
+        private void Decompile(char c)
+        {
+            switch (c)
+            {
+                case 'p':
+                    {
+                        if (!string.IsNullOrEmpty(Prised))
+                        {
+                            string[] mass = Prised.Split('/');
+
+                            _p1 = double.Parse(mass[0]);
+                            _p2 = double.Parse(mass[1]);
+                            _p3 = double.Parse(mass[2]);
+                        }
+
+                        break;
+                    }
+                case 'j':
+                    {
+                        if (!string.IsNullOrEmpty(Jym))
+                        {
+                            string[] mass = Jym.Split('/');
+
+                            _j1 = double.Parse(mass[0]);
+                            _j2 = double.Parse(mass[1]);
+                            _j3 = double.Parse(mass[2]);
+
+                        }
+                        break;
+                    }
+                case 't':
+                    {
+                        if (!string.IsNullOrEmpty(Taga))
+                        {
+                            string[] mass = Taga.Split('/');
+
+                            _t1 = double.Parse(mass[0]);
+                            _t2 = double.Parse(mass[1]);
+                            _t3 = double.Parse(mass[2]);
+
+                        }
+                        break;
+                    }
+            }
+        }
+
+        public double p1 { get { return _p1; } set { _p1 = value; Compile('p'); } }
+        public double p2 { get { return _p2; } set { _p2 = value; Compile('p'); } }
+        public double p3 { get { return _p3; } set { _p3 = value; Compile('p'); } }
+
+        public double j1 { get { return _j1; } set { _j1 = value; Compile('j'); } }
+        public double j2 { get { return _j2; } set { _j2 = value; Compile('j'); } }
+        public double j3 { get { return _j3; } set { _j3 = value; Compile('j'); } }
+
+        public double t1 { get { return _t1; } set { _t1 = value; Compile('t'); } }
+        public double t2 { get { return _t2; } set { _t2 = value; Compile('t'); } }
+        public double t3 { get { return _t3; } set { _t3 = value; Compile('t'); } }
+
+
         public int Number { get; set; }
         public string Name { get; set; }
         public string Birthday { get; set; }
@@ -19,10 +118,10 @@ namespace ExcelLibrary
         public double Weight { get; set; }
         public double kWilis { get; set; }
 
-        public double Prised { get; set; }
-        public double Jym { get; set; }
+        public string Prised { get; set; }
+        public string Jym { get; set; }
         public string Alpha { get; set; }   //WHAT THE FUCK??
-        public double Taga { get; set; }
+        public string Taga { get; set; }
 
         public double Summ { get; set; }
         public int Place { get; set; }
@@ -43,15 +142,17 @@ namespace ExcelLibrary
             Club = string.Empty;
             Weight = 0;
             kWilis = 0;
-            Prised = 0;
-            Jym = 0;
+            Prised = string.Empty;
+            Jym = string.Empty;
             Alpha = string.Empty;
-            Taga = 0;
+            Taga = string.Empty;
             Summ = 0;
             Place = 0;
             NormFlag = false;
             Points = 0;
             Trainers = string.Empty;
+
+
         }
 
         public List<string> ToStringList()
@@ -68,17 +169,24 @@ namespace ExcelLibrary
             result.Add(Club);
             result.Add(Weight.ToString());
             result.Add(kWilis.ToString());
-            result.Add(Prised.ToString());
-            result.Add(Jym.ToString());
+            result.Add(Trainers);
+            result.Add(Prised);
+            result.Add(Jym);
             result.Add(Alpha);
-            result.Add(Taga.ToString());
+            result.Add(Taga);
             result.Add(Summ.ToString());
             result.Add(Place.ToString());
             result.Add(NormFlag.ToString());
             result.Add(Points.ToString());
-            result.Add(Trainers);
 
             return result;
+        }
+
+        public void InitEnd()
+        {
+            Decompile('p');
+            Decompile('j');
+            Decompile('t');
         }
     }
 }

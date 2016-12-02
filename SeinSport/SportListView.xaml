@@ -8,15 +8,15 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel>
         <TextBlock x:Name="level"/>
-        <ListView x:Name="sportList" ItemsSource="{Binding}" Margin="10">
+        <ListView x:Name="sportList" ItemsSource="{Binding}" Margin="10" MouseLeftButtonUp="sportList_MouseLeftButtonUp">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Width="100">ФИО</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Dirthday}" Width="100">Дата рождения</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Level}" Width="100">Возрастная категория</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Weight}" Width="100">Вес</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Club}" Width="100">Клуб</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Trainer}" Width="100">ФИО тренера</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100">ФИО</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Birthday, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100">Дата рождения</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Level, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100">Возрастная категория</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Weight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100">Вес</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Club, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100">Клуб</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Trainers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100">ФИО тренера</GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

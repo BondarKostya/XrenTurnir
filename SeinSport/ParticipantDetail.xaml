@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lib="clr-namespace:ExcelLibrary;assembly=ExcelLibrary"
         xmlns:local="clr-namespace:SeinSport"
         mc:Ignorable="d"
-        Title="ParticipantDetail" Height="353.008" Width="581.955">
-    <Grid Margin="-2,0,2,0">
+        Title="ParticipantDetail" Height="370" Width="600">
+    <Grid Margin="-2,0,2,0" >
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                 <GradientStop Color="#FF319393" Offset="0.096"/>
@@ -18,9 +19,9 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Margin="77,12,294,231" Orientation="Vertical">
-            <TextBox Margin="0,0,0,5" x:Name="fioTB" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-            <TextBox Margin="0,0,0,5" x:Name="clubTB" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-            <TextBox Margin="0,0,0,5" x:Name="trenerTB" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+            <TextBox Margin="0,0,0,5" x:Name="fioTB" Height="23" TextWrapping="Wrap" Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
+            <TextBox Margin="0,0,0,5" x:Name="clubTB" Height="23" TextWrapping="Wrap" Text="{Binding Path=Club, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
+            <TextBox Margin="0,0,0,5" x:Name="trenerTB" Height="23" TextWrapping="Wrap" Text="{Binding Path=Trainers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
 
         </StackPanel>
         <StackPanel Margin="10,8,0,0" Orientation="Vertical" HorizontalAlignment="Left" Width="67" Height="83" VerticalAlignment="Top">
@@ -36,9 +37,9 @@
 
         </StackPanel>
         <StackPanel Margin="375,12,0,231" Orientation="Vertical" HorizontalAlignment="Left" Width="189">
-            <TextBox Margin="0,0,0,5" x:Name="bornTB" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-            <TextBox Margin="0,0,0,5" x:Name="weightTB" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-            <TextBox Margin="0,0,0,5" x:Name="categoryTB" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+            <TextBox Margin="0,0,0,5" x:Name="bornTB" Height="23" TextWrapping="Wrap" Text="{Binding Path=Birthday, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
+            <TextBox Margin="0,0,0,5" x:Name="weightTB" Height="23" TextWrapping="Wrap" Text="{Binding Path=Weight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
+            <TextBox Margin="0,0,0,5" x:Name="categoryTB" Height="23" TextWrapping="Wrap" Text="{Binding Path=Level, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
 
         </StackPanel>
         <Grid Margin="10,151,11,10" ShowGridLines="False">
@@ -66,9 +67,9 @@
                 <Border Grid.Row="3" BorderBrush="White" BorderThickness="1">
                 </Border>
                 <Label Grid.Row="0" Content="Упражнение 1" HorizontalAlignment="Center" FontSize="15" FontFamily="Segoe UI Black" Foreground="White" />
-                <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="*6 kg"  Grid.Row="1" x:Name="exers1_1" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
-                <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="*6 kg"  Grid.Row="2" x:Name="exers1_2" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
-                <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="*6 kg"  Grid.Row="3" x:Name="exers1_3" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
+                <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="{Binding Path=p1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="1" x:Name="exers1_1" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
+                <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="{Binding Path=p2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="2" x:Name="exers1_2" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
+                <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="{Binding Path=p3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="3" x:Name="exers1_3" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
 
             </Grid>
             <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Height="161" VerticalAlignment="Top" Width="185">
@@ -83,9 +84,9 @@
                 </Border>
                 <Border Grid.Row="3" BorderBrush="White" BorderThickness="1">
                 </Border>
-                <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="*6 kg"  Grid.Row="1" x:Name="exers2_1" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
-                <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="*6 kg"  Grid.Row="2" x:Name="exers2_2" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
-                <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="*6 kg"  Grid.Row="3" x:Name="exers2_3" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
+                <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="{Binding Path=j1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="1" x:Name="exers2_1" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
+                <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="{Binding Path=j2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="2" x:Name="exers2_2" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
+                <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="{Binding Path=j3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="3" x:Name="exers2_3" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
 
             </Grid>
             <Grid Name="ThirdGrid" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Height="161" VerticalAlignment="Top" Width="185">
@@ -100,9 +101,9 @@
                 </Border>
                 <Border Grid.Row="3" BorderBrush="White" BorderThickness="1">
                 </Border>
-                <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="*6 kg"  Grid.Row="1" x:Name="exers3_1" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
-                <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="*6 kg"  Grid.Row="2" x:Name="exers3_2" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
-                <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="*6 kg"  Grid.Row="3" x:Name="exers3_3" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
+                <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="{Binding Path=t1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="1" x:Name="exers3_1" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
+                <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="{Binding Path=t2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="2" x:Name="exers3_2" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
+                <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="{Binding Path=t3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="3" x:Name="exers3_3" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
 
             </Grid>
 

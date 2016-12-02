@@ -52,6 +52,7 @@ namespace SeinSport
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
             //TODO: back action
+            this.Close();
         }
 
         private void timerSwitcher_Click(object sender, RoutedEventArgs e)

@@ -36,7 +36,7 @@ namespace ExcelLibrary
             }
         }
 
-        public static void ToExcel(this List<Data> values, string worksheetTitle)
+        public static void ToExcel(this List<Data> values, string fileName, string worksheetTitle)
         {
             var wb = new XLWorkbook(); //create workbook
             var ws = wb.Worksheets.Add(worksheetTitle); //add worksheet to workbook
@@ -54,6 +54,7 @@ namespace ExcelLibrary
             titles.Add("Клуб");
             titles.Add("Власна вага");
             titles.Add("Коефіцієнт Віліса");
+            titles.Add("Тренер (и)");
             titles.Add("Присідання");
             titles.Add("Жим");
             titles.Add("а 2-х вправ");
@@ -63,7 +64,6 @@ namespace ExcelLibrary
             titles.Add("Викон. розряд");
             titles.Add("Сума КУ");
             titles.Add("Очки");
-            titles.Add("Тренер (и)");
 
             foreach (var title in titles)
             {
@@ -78,8 +78,15 @@ namespace ExcelLibrary
             {
                 ////insert data to from second row on
                 //ws.Cell(2, 1).InsertData(values);
-                int c = 2;
-                foreach (var value in values)
+                int c = 3;
+
+                var lowValues = values.Where(x => x.Weight <= Data.Low).ToList();
+                var mediumValues = values.Where(x => x.Weight > Data.Low && x.Weight <= Data.Medium).ToList();
+                var hardValues = values.Where(x => x.Weight > Data.Medium && x.Weight <= Data.Hard).ToList();
+                var tryHardValues = values.Where(x => x.Weight > Data.Hard && x.Weight < Data.TryHard).ToList();
+
+                ws.Cell(c++, 1).Value = string.Format("Вагова категорія до {0} кг", Data.Low);
+                foreach (var value in lowValues)
                 {
                     int j = 1;
                     //ws.Cell(c, 1).Value = c - 1;
@@ -89,113 +96,170 @@ namespace ExcelLibrary
                     }
                     c++;
                 }
+                c++;
+
+                ws.Cell(c++, 1).Value = string.Format("Вагова категорія до {0} кг", Data.Medium);
+                foreach (var value in mediumValues)
+                {
+                    int j = 1;
+                    //ws.Cell(c, 1).Value = c - 1;
+                    foreach (var property in value.ToStringList())
+                    {
+                        ws.Cell(c, j++).Value = property;
+                    }
+                    c++;
+                }
+                c++;
+
+                ws.Cell(c++, 1).Value = string.Format("Вагова категорія до {0} кг", Data.Hard);
+                foreach (var value in hardValues)
+                {
+                    int j = 1;
+                    //ws.Cell(c, 1).Value = c - 1;
+                    foreach (var property in value.ToStringList())
+                    {
+                        ws.Cell(c, j++).Value = property;
+                    }
+                    c++;
+                }
+                c++;
+
+                ws.Cell(c++, 1).Value = string.Format("Вагова категорія до {0} кг", Data.TryHard);
+                foreach (var value in tryHardValues)
+                {
+                    int j = 1;
+                    //ws.Cell(c, 1).Value = c - 1;
+                    foreach (var property in value.ToStringList())
+                    {
+                        ws.Cell(c, j++).Value = property;
+                    }
+                    c++;
+                }
+                c++;
+
+                //foreach (var value in values)
+                //{
+                //    int j = 1;
+                //    //ws.Cell(c, 1).Value = c - 1;
+                //    foreach (var property in value.ToStringList())
+                //    {
+                //        ws.Cell(c, j++).Value = property;
+                //    }
+                //    c++;
+                //}
             }
 
             //save file to memory stream and return it as byte array
             using (var ms = new System.IO.MemoryStream())
             {
-                wb.SaveAs("D:\\test.xlsx");
+                wb.SaveAs(fileName);
             }
         }
 
-        public static List<Data> GetData(string path)
+        public static List<Data> GetData(string path, string worksheet)
         {
-            XLWorkbook workbook = new XLWorkbook(path);
-            var ws = workbook.Worksheet(1);
-
-            var cellName = ws.Cells().Where(c => c.Value.ToString() == "Прізвище/Ім'я").First();
-
-            List<IXLCell> cells = new List<IXLCell>();
-            while (!cellName.IsEmpty())
-            {
-                cellName = cellName.CellBelow();
-                cells.Add(cellName);
-            }
-
-
             List<Data> result = new List<Data>();
-            IXLCell tempCell;
-            foreach (var cell in cells)
+
+            try
             {
-                var human = new Data();
-                human.Name = cell.Value.ToString();
+                XLWorkbook workbook = new XLWorkbook(path);
+                var ws = workbook.Worksheet(worksheet);
 
-                tempCell = cell.CellRight();
-                human.Birthday = tempCell.Value.ToString();
+                var cellName = ws.CellsUsed().Where(c => c.Value.ToString() == "Прізвище/Ім'я").First();
 
-                tempCell = tempCell.CellRight();
-                human.Level = tempCell.Value.ToString();
-
-                tempCell = tempCell.CellRight();
-                human.State = tempCell.Value.ToString();
-
-                tempCell = tempCell.CellRight();
-                human.Sity = tempCell.Value.ToString();
-
-                tempCell = tempCell.CellRight();
-                human.Assotiation = tempCell.Value.ToString();
-
-                tempCell = tempCell.CellRight();
-                human.Club = tempCell.Value.ToString();
-
-                tempCell = tempCell.CellRight();
-                double temp;
-                double.TryParse(tempCell.Value.ToString(), out temp);
-                human.Weight = temp;
-
-                tempCell = tempCell.CellRight();
-                double.TryParse(tempCell.Value.ToString(), out temp);
-                human.kWilis = temp;
-
-                tempCell = tempCell.CellRight();
-                double.TryParse(tempCell.Value.ToString(), out temp);
-                human.Prised = temp;
-
-                tempCell = tempCell.CellRight();
-                double.TryParse(tempCell.Value.ToString(), out temp);
-                human.Jym = temp;
-
-                tempCell = tempCell.CellRight();
-                human.Alpha = tempCell.Value.ToString();
-
-                tempCell = tempCell.CellRight();
-                double.TryParse(tempCell.Value.ToString(), out temp);
-                human.Taga = temp;
-
-                tempCell = tempCell.CellRight();
-                double.TryParse(tempCell.Value.ToString(), out temp);
-                human.Summ = temp;
-
-                tempCell = tempCell.CellRight();
-                int tempInt;
-                int.TryParse(tempCell.Value.ToString(), out tempInt);
-                human.Place = tempInt;
-
-                tempCell = tempCell.CellRight();
-                bool tempBool;
-                bool.TryParse(tempCell.Value.ToString(), out tempBool);
-                human.NormFlag = tempBool;
-
-                tempCell = tempCell.CellRight();
-                double.TryParse(tempCell.Value.ToString(), out temp);
-                human.Points = temp;
-
-                tempCell = tempCell.CellRight();
-                human.Trainers = tempCell.Value.ToString();
-                
-
-                if (human.Name != string.Empty)
-                    result.Add(human);
-            }
-
-            foreach (var cell in result)
-            {
-                foreach (var prop in cell.ToStringList())
+                List<IXLCell> cells = new List<IXLCell>();
+                while (!cellName.IsEmpty() || cellName.Address.RowNumber < 200)
                 {
-                    System.Diagnostics.Debug.WriteLine(prop);
+                    cellName = cellName.CellBelow();
+                    cells.Add(cellName);
+                }
+
+                IXLCell tempCell;
+                foreach (var cell in cells)
+                {
+                    if (!cell.IsEmpty())
+                    {
+                        var human = new Data();
+                        human.Name = cell.Value.ToString();
+
+                        tempCell = cell.CellRight();
+                        human.Birthday = tempCell.Value.ToString().Replace("0:00:00", string.Empty);
+
+                        tempCell = tempCell.CellRight();
+                        human.Level = tempCell.Value.ToString();
+
+                        tempCell = tempCell.CellRight();
+                        human.State = tempCell.Value.ToString();
+
+                        tempCell = tempCell.CellRight();
+                        human.Sity = tempCell.Value.ToString();
+
+                        tempCell = tempCell.CellRight();
+                        human.Assotiation = tempCell.Value.ToString();
+
+                        tempCell = tempCell.CellRight();
+                        human.Club = tempCell.Value.ToString();
+
+                        tempCell = tempCell.CellRight();
+                        double temp;
+                        double.TryParse(tempCell.Value.ToString(), out temp);
+                        human.Weight = temp;
+
+                        tempCell = tempCell.CellRight();
+                        double.TryParse(tempCell.Value.ToString(), out temp);
+                        human.kWilis = temp;
+
+                        tempCell = tempCell.CellRight();
+                        human.Trainers = tempCell.Value.ToString();
+
+                        tempCell = tempCell.CellRight();
+                        human.Prised = tempCell.Value.ToString();
+
+                        tempCell = tempCell.CellRight();
+                        human.Jym = tempCell.Value.ToString();
+
+                        tempCell = tempCell.CellRight();
+                        human.Alpha = tempCell.Value.ToString();
+
+                        tempCell = tempCell.CellRight();
+                        human.Taga = tempCell.Value.ToString();
+
+                        tempCell = tempCell.CellRight();
+                        double.TryParse(tempCell.Value.ToString(), out temp);
+                        human.Summ = temp;
+
+                        tempCell = tempCell.CellRight();
+                        int tempInt;
+                        int.TryParse(tempCell.Value.ToString(), out tempInt);
+                        human.Place = tempInt;
+
+                        tempCell = tempCell.CellRight();
+                        bool tempBool;
+                        bool.TryParse(tempCell.Value.ToString(), out tempBool);
+                        human.NormFlag = tempBool;
+
+                        tempCell = tempCell.CellRight();
+                        double.TryParse(tempCell.Value.ToString(), out temp);
+                        human.Points = temp;
+
+                        human.InitEnd();
+                        if (human.Name != string.Empty)
+                            result.Add(human);
+                    }
+                }
+
+                foreach (var cell in result)
+                {
+                    foreach (var prop in cell.ToStringList())
+                    {
+                        System.Diagnostics.Debug.WriteLine(prop);
+                    }
                 }
             }
-
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
             return result;
         }
     }

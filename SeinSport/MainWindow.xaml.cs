@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExcelLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,26 +26,20 @@ namespace SeinSport
             InitializeComponent();
 
         }
-
-
-        public List<Object> requestDataForTab(int tab) 
-        {
-            return null;
-        }
-
+                
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            SportListView sportView = new SportListView();
-            SportListView testView = new SportListView();
+            //SportListView sportView = new SportListView();
+            //SportListView testView = new SportListView();
 
-            sportView.level.Text = "От 100";
-            sportView.DataContext = Init();
+            //sportView.level.Text = "От 100";
+            //sportView.DataContext = Init();
 
-            testView.level.Text = "До 100";
-            testView.DataContext = Init(false);
+            //testView.level.Text = "До 100";
+            //testView.DataContext = Init(false);
 
-            sportPanel.Children.Add(sportView);
-            sportPanel.Children.Add(testView);                    
+            //sportPanel.Children.Add(sportView);
+            //sportPanel.Children.Add(testView);                    
         }
 
         private List<ExcelLibrary.Data> Init(bool first = true)
@@ -111,9 +106,79 @@ namespace SeinSport
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var item = sportPanel.Children[0];
-            sportPanel.Children.Remove(item);
-            sportPanel.Children.Add(item);
+            var item = sportManPanel.Children[0];
+            sportManPanel.Children.Remove(item);
+            sportManPanel.Children.Add(item);
+        }
+
+        private void LoadClick(object sender, RoutedEventArgs e)
+        {
+            var data = ExcelLibrary.Engine.GetData("D:\\test.xlsx", "Man");
+
+            manPanel.DataContext = data;
+
+            LoadData(data, sportManPanel);
+        }
+
+        private void LoadWomanClick(object sender, RoutedEventArgs e)
+        {
+            var data = ExcelLibrary.Engine.GetData("D:\\test.xlsx", "Woman");
+
+            womanPanel.DataContext = data;
+
+            LoadData(data, sportWomanPanel);
+        }
+
+        private void LoadData(List<Data> data, StackPanel panel)
+        {
+            var lowLvl = data.Where(x => x.Weight <= ExcelLibrary.Data.Low).ToList();
+            var mediumLvl = data.Where(x => x.Weight > ExcelLibrary.Data.Low && x.Weight <= ExcelLibrary.Data.Medium).ToList();
+            var hardLvl = data.Where(x => x.Weight > ExcelLibrary.Data.Medium && x.Weight <= ExcelLibrary.Data.Hard).ToList();
+            var tryHardLvl = data.Where(x => x.Weight > ExcelLibrary.Data.Hard && x.Weight < ExcelLibrary.Data.TryHard).ToList();
+
+            panel.Children.Clear();
+
+            SportListView lowView = new SportListView();
+            lowView.level.Text = "До 60 кг:";
+            lowView.DataContext = lowLvl;
+
+            SportListView mediumView = new SportListView();
+            mediumView.level.Text = "До 80 кг:";
+            mediumView.DataContext = mediumLvl;
+
+            SportListView hardView = new SportListView();
+            hardView.level.Text = "До 100 кг:";
+            hardView.DataContext = hardLvl;
+
+            SportListView tryhardView = new SportListView();
+            tryhardView.level.Text = "До 150 кг:";
+            tryhardView.DataContext = tryHardLvl;
+
+            panel.Children.Add(lowView);
+            panel.Children.Add(mediumView);
+            panel.Children.Add(hardView);
+            panel.Children.Add(tryhardView);
+        }
+
+        private void SaveClick(object sender, RoutedEventArgs e)
+        {
+            var data = manPanel.DataContext as List<ExcelLibrary.Data>;
+
+            data.ToExcel("D:\\test.xlsx","Man");
+        }
+
+        private void SaveWomanClick(object sender, RoutedEventArgs e)
+        {
+            var data = womanPanel.DataContext as List<ExcelLibrary.Data>;
+
+            data.ToExcel("D:\\test.xlsx", "Woman");
+        }
+
+        private void ToLastWoman(object sender, RoutedEventArgs e)
+        {
+            var item = sportWomanPanel.Children[0];
+            sportWomanPanel.Children.Remove(item);
+            sportWomanPanel.Children.Add(item);
         }
     }
 }

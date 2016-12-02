@@ -9,19 +9,28 @@
         Title="MainWindow" Height="600" Width="588.157" ResizeMode="CanResize"
         Loaded="Window_Loaded">
     <TabControl TabStripPlacement="Bottom" x:Name="tabControl" Margin="20" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
-        <TabItem Header="Муж">            
-                <!--<localGrids:CategoryGrid x:Name="mainGrid" Background="#FFE5E5E5" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
-                </localGrids:CategoryGrid>-->
-            <StackPanel>
-                <Button Content="ToLast" Click="Button_Click" Margin="5"/>
-                <StackPanel x:Name="sportPanel">
-                    <!--<local:SportListView x:Name="sportView"/>
-                <local:SportListView x:Name="testView"/>-->
+        <TabItem Header="Муж">
+            <StackPanel x:Name="manPanel">
+                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="ToLast" Click="Button_Click" Margin="5" Width="50" Height="30"/>
+                    <Button Content="Load" Click="LoadClick" Margin="5" Width="50" Height="30"/>
+                    <Button Content="Save" Click="SaveClick" Margin="5" Width="50" Height="30"/>
+                </WrapPanel>
+                <StackPanel x:Name="sportManPanel">                    
                 </StackPanel>
             </StackPanel>
         </TabItem>
         <TabItem Header="Жен">
-            <Grid Background="#FFE5E5E5"/>
+            <!--<Grid Background="#FFE5E5E5"/>-->
+            <StackPanel x:Name="womanPanel">
+                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="ToLast" Click="ToLastWoman" Margin="5" Width="50" Height="30"/>
+                    <Button Content="Load" Click="LoadWomanClick" Margin="5" Width="50" Height="30"/>
+                    <Button Content="Save" Click="SaveWomanClick" Margin="5" Width="50" Height="30"/>
+                </WrapPanel>
+                <StackPanel x:Name="sportWomanPanel">
+                </StackPanel>
+            </StackPanel>
         </TabItem>
     </TabControl>
 </Window>

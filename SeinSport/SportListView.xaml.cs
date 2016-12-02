@@ -24,5 +24,14 @@ namespace SeinSport
         {
             InitializeComponent();
         }
+
+        private void sportList_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ParticipantDetail detail = new ParticipantDetail();
+            var data = (sender as ListView).Items.CurrentItem as ExcelLibrary.Data;
+            detail.DataContext = data;
+
+            detail.ShowDialog();
+        }
     }
 }
