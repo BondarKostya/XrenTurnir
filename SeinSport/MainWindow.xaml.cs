@@ -26,7 +26,7 @@ namespace SeinSport
             InitializeComponent();
 
         }
-                
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //SportListView sportView = new SportListView();
@@ -106,9 +106,12 @@ namespace SeinSport
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var item = sportManPanel.Children[0];
-            sportManPanel.Children.Remove(item);
-            sportManPanel.Children.Add(item);
+            //var item = sportManPanel.Children[0];
+            //sportManPanel.Children.Remove(item);
+            //sportManPanel.Children.Add(item);
+
+            currentListView.DataContext = null;
+            currentListView.Update();
         }
 
         private void LoadClick(object sender, RoutedEventArgs e)
@@ -117,7 +120,7 @@ namespace SeinSport
 
             manPanel.DataContext = data;
 
-            LoadData(data, sportManPanel);
+            Load(data, sportManPanel, currentView);
         }
 
         private void LoadWomanClick(object sender, RoutedEventArgs e)
@@ -126,7 +129,7 @@ namespace SeinSport
 
             womanPanel.DataContext = data;
 
-            LoadData(data, sportWomanPanel);
+            Load(data, sportWomanPanel, currentWomanView);
         }
 
         private void LoadData(List<Data> data, StackPanel panel)
@@ -160,11 +163,43 @@ namespace SeinSport
             panel.Children.Add(tryhardView);
         }
 
+        private void Load(List<Data> data, StackPanel panel, StackPanel currentPanel)
+        {
+            panel.Children.Clear();
+
+            SportListView view = new SportListView();
+            view.level.Text = "Учасники:";
+            view.DataContext = data;
+            view.OnToQuery += (champion) =>
+            {
+                CurrentSportListView currentView = currentPanel.Children[0] as CurrentSportListView;
+                currentView.level.Text = "Текущий подход:";
+
+                var currentData = currentView.DataContext as List<Data>;
+
+                if (currentData == null)
+                    currentData = new List<Data>();
+
+                if (!currentData.Contains(champion))
+                    currentData.Add(champion);
+
+                currentView.DataContext = currentData;
+
+                currentView.Update();
+
+                //currentPanel.Children.Add(currentView);
+            };
+
+            panel.Children.Add(view);
+
+            //(currentPanel.Children[0] as CurrentSportListView).sportList.ItemsSource = null;
+        }
+
         private void SaveClick(object sender, RoutedEventArgs e)
         {
             var data = manPanel.DataContext as List<ExcelLibrary.Data>;
 
-            data.ToExcel("D:\\test.xlsx","Man");
+            data.ToExcel("D:\\test.xlsx", "Man");
         }
 
         private void SaveWomanClick(object sender, RoutedEventArgs e)
@@ -176,9 +211,12 @@ namespace SeinSport
 
         private void ToLastWoman(object sender, RoutedEventArgs e)
         {
-            var item = sportWomanPanel.Children[0];
-            sportWomanPanel.Children.Remove(item);
-            sportWomanPanel.Children.Add(item);
+            //var item = sportWomanPanel.Children[0];
+            //sportWomanPanel.Children.Remove(item);
+            //sportWomanPanel.Children.Add(item);
+
+            currentWomanListView.DataContext = null;
+            currentWomanListView.Update();
         }
     }
 }

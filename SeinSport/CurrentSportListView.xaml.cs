@@ -16,16 +16,14 @@ using System.Windows.Shapes;
 namespace SeinSport
 {
     /// <summary>
-    /// Логика взаимодействия для SportListView.xaml
+    /// Логика взаимодействия для CurrentSportListView.xaml
     /// </summary>
-    public partial class SportListView : UserControl
+    public partial class CurrentSportListView : UserControl
     {
-        public SportListView()
+        public CurrentSportListView()
         {
             InitializeComponent();
         }
-
-        public event Action<ExcelLibrary.Data> OnToQuery;
 
         private void sportList_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -36,13 +34,9 @@ namespace SeinSport
             detail.ShowDialog();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void Update()
         {
-            e.Handled = true;
-
-            var data = (sender as Button).DataContext as ExcelLibrary.Data;
-
-            OnToQuery?.Invoke(data);
+            sportList.Items.Refresh();
         }
     }
 }

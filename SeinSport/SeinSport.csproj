@@ -55,12 +55,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CurrentSportListView.xaml.cs">
+      <DependentUpon>CurrentSportListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ParticipantDetail.xaml.cs">
       <DependentUpon>ParticipantDetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="SportListView.xaml.cs">
       <DependentUpon>SportListView.xaml</DependentUpon>
     </Compile>
+    <Page Include="CurrentSportListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

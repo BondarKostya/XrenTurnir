@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="SeinSport.SportListView"
+﻿<UserControl x:Class="SeinSport.CurrentSportListView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,16 +8,9 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel>
         <TextBlock x:Name="level"/>
-        <ListView x:Name="sportList" ItemsSource="{Binding}" Margin="10">
+        <ListView x:Name="sportList" ItemsSource="{Binding}" Margin="10" MouseLeftButtonUp="sportList_MouseLeftButtonUp">
             <ListView.View>
-                <GridView>
-                    <GridViewColumn>
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button DataContext="{Binding}" Content="В очередь" Click="Button_Click"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                <GridView>                    
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100">ФИО</GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Birthday, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100">Дата рождения</GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Level, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100">Возрастная категория</GridViewColumn>
@@ -25,7 +18,7 @@
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Club, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100">Клуб</GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Trainers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100">ФИО тренера</GridViewColumn>
                 </GridView>
-            </ListView.View>            
+            </ListView.View>
         </ListView>
     </StackPanel>
 </UserControl>

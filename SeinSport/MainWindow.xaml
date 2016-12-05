@@ -12,10 +12,15 @@
         <TabItem Header="Муж">
             <StackPanel x:Name="manPanel">
                 <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Content="ToLast" Click="Button_Click" Margin="5" Width="50" Height="30"/>
-                    <Button Content="Load" Click="LoadClick" Margin="5" Width="50" Height="30"/>
-                    <Button Content="Save" Click="SaveClick" Margin="5" Width="50" Height="30"/>
+                    <Button Content="Очистить" Click="Button_Click" Margin="5" Width="50" Height="30"/>
+                    <Button Content="Загрузить" Click="LoadClick" Margin="5" Width="50" Height="30"/>
+                    <Button Content="Сохранить" Click="SaveClick" Margin="5" Width="50" Height="30"/>
                 </WrapPanel>
+                <StackPanel x:Name="currentPanel">
+                    <StackPanel x:Name="currentView">
+                        <local:CurrentSportListView x:Name="currentListView" DataContext="{x:Null}"/>
+                    </StackPanel>
+                </StackPanel>
                 <StackPanel x:Name="sportManPanel">                    
                 </StackPanel>
             </StackPanel>
@@ -24,10 +29,15 @@
             <!--<Grid Background="#FFE5E5E5"/>-->
             <StackPanel x:Name="womanPanel">
                 <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Content="ToLast" Click="ToLastWoman" Margin="5" Width="50" Height="30"/>
-                    <Button Content="Load" Click="LoadWomanClick" Margin="5" Width="50" Height="30"/>
-                    <Button Content="Save" Click="SaveWomanClick" Margin="5" Width="50" Height="30"/>
+                    <Button Content="Очистить" Click="ToLastWoman" Margin="5" Width="50" Height="30"/>
+                    <Button Content="Загрузить" Click="LoadWomanClick" Margin="5" Width="50" Height="30"/>
+                    <Button Content="Сохранить" Click="SaveWomanClick" Margin="5" Width="50" Height="30"/>
                 </WrapPanel>
+                <StackPanel x:Name="currentWomanPanel">
+                    <StackPanel x:Name="currentWomanView">
+                        <local:CurrentSportListView x:Name="currentWomanListView" DataContext="{x:Null}"/>
+                    </StackPanel>
+                </StackPanel>
                 <StackPanel x:Name="sportWomanPanel">
                 </StackPanel>
             </StackPanel>

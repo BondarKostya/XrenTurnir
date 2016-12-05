@@ -55,21 +55,44 @@ namespace ExcelLibrary
             titles.Add("Власна вага");
             titles.Add("Коефіцієнт Віліса");
             titles.Add("Тренер (и)");
-            titles.Add("Присідання");
-            titles.Add("Жим");
-            titles.Add("а 2-х вправ");
-            titles.Add("Тяга");
-            titles.Add("Сума");
-            titles.Add("Місце");
-            titles.Add("Викон. розряд");
-            titles.Add("Сума КУ");
-            titles.Add("Очки");
+            //titles.Add("Присідання");
+            //titles.Add("Жим");
+            //titles.Add("а 2-х вправ");
+            //titles.Add("Тяга");
+            //titles.Add("Сума");
+            //titles.Add("Місце");
+            //titles.Add("Викон. розряд");
+            //titles.Add("Сума КУ");
+            //titles.Add("Очки");
+
+            ws.Range("L1:N1").Merge();
+            ws.Range("O1:Q1").Merge();
+            ws.Range("R1:T1").Merge();
 
             foreach (var title in titles)
             {
                 ws.Cell(1, i).Value = title;
                 i++;
             }
+
+            ws.Cell(1, 12).Value = "Присідання";
+            ws.Cell(2, 12).Value = "1";
+            ws.Cell(2, 13).Value = "2";
+            ws.Cell(2, 14).Value = "3";
+            ws.Cell(1, 15).Value = "Жим";
+            ws.Cell(2, 15).Value = "1";
+            ws.Cell(2, 16).Value = "2";
+            ws.Cell(2, 17).Value = "3";
+            ws.Cell(1, 18).Value = "Тяга";
+            ws.Cell(2, 18).Value = "1";
+            ws.Cell(2, 19).Value = "2";
+            ws.Cell(2, 20).Value = "3";
+            ws.Cell(1, 21).Value = "а 2-х вправ";
+            ws.Cell(1, 22).Value = "Сума";
+            ws.Cell(1, 23).Value = "Місце";
+            ws.Cell(1, 24).Value = "Викон. розряд";
+            ws.Cell(1, 25).Value = "Сума КУ";
+            ws.Cell(1, 26).Value = "Очки";
 
             //var headers = ws.Range("A1:T1");
             ws.Columns(1, 20).AdjustToContents();
@@ -213,17 +236,44 @@ namespace ExcelLibrary
                         human.Trainers = tempCell.Value.ToString();
 
                         tempCell = tempCell.CellRight();
-                        human.Prised = tempCell.Value.ToString();
+                        double.TryParse(tempCell.Value.ToString(), out temp);
+                        human.p1 = temp;
 
                         tempCell = tempCell.CellRight();
-                        human.Jym = tempCell.Value.ToString();
+                        double.TryParse(tempCell.Value.ToString(), out temp);
+                        human.p2 = temp;
+
+                        tempCell = tempCell.CellRight();
+                        double.TryParse(tempCell.Value.ToString(), out temp);
+                        human.p3 = temp;
+
+                        tempCell = tempCell.CellRight();
+                        double.TryParse(tempCell.Value.ToString(), out temp);
+                        human.j1 = temp;
+
+                        tempCell = tempCell.CellRight();
+                        double.TryParse(tempCell.Value.ToString(), out temp);
+                        human.j2 = temp;
+
+                        tempCell = tempCell.CellRight();
+                        double.TryParse(tempCell.Value.ToString(), out temp);
+                        human.j3 = temp;
+
+                        tempCell = tempCell.CellRight();
+                        double.TryParse(tempCell.Value.ToString(), out temp);
+                        human.t1 = temp;
+
+                        tempCell = tempCell.CellRight();
+                        double.TryParse(tempCell.Value.ToString(), out temp);
+                        human.t2 = temp;
+
+                        tempCell = tempCell.CellRight();
+                        double.TryParse(tempCell.Value.ToString(), out temp);
+                        human.t3 = temp;
 
                         tempCell = tempCell.CellRight();
                         human.Alpha = tempCell.Value.ToString();
-
-                        tempCell = tempCell.CellRight();
-                        human.Taga = tempCell.Value.ToString();
-
+                                                
                         tempCell = tempCell.CellRight();
                         double.TryParse(tempCell.Value.ToString(), out temp);
                         human.Summ = temp;
