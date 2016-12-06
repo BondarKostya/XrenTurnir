@@ -48,7 +48,7 @@
         <TabItem Header="Настройки">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="IP:"Margin="5"/>
+                    <TextBlock Text="IP:" Margin="5"/>
                     <TextBox x:Name="ipBox" MinWidth="300"/>
                 </StackPanel>
                 <Button Content="Connect" Click="Button_Click_3"/>
