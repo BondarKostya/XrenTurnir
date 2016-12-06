@@ -25,12 +25,15 @@ namespace SeinSport
             InitializeComponent();
         }
 
+        public Sport.SportServiceClient client;
+
         public event Action<ExcelLibrary.Data> OnToQuery;
 
         private void sportList_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             ParticipantDetail detail = new ParticipantDetail();
             var data = (sender as ListView).SelectedItem as ExcelLibrary.Data;
+            detail.client = client;
             detail.DataContext = data;
 
             detail.ShowDialog();

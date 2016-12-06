@@ -35,6 +35,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,15 +47,52 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\Sport\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Service References\Sport\service.wsdl" />
+    <None Include="Service References\Sport\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Sport\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Sport\WcfLiblary.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExcelLibrary\ExcelLibrary.csproj">
       <Project>{f292e7cf-be74-44a0-abea-110fd4ce4742}</Project>
       <Name>ExcelLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WcfLiblary\WcfLiblary.csproj">
+      <Project>{f3c37912-a09c-436b-9f9d-2a34614d5024}</Project>
+      <Name>WcfLiblary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\Sport\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Sport\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Sport\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Sport\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,13 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelLibrary", "ExcelLibrary\ExcelLibrary.csproj", "{F292E7CF-BE74-44A0-ABEA-110FD4CE4742}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{0D38034B-2F9D-4DC1-A991-917AF1DC7077}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeinSport", "SeinSport\SeinSport.csproj", "{73062BB6-3307-46D6-8B54-BCB1C9A67FD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfLiblary", "WcfLiblary\WcfLiblary.csproj", "{F3C37912-A09C-436B-9F9D-2A34614D5024}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeinSportView", "SeinSportView\SeinSportView.csproj", "{8AD15906-AC38-49E9-8040-EDC5A20D6B4B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F3C37912-A09C-436B-9F9D-2A34614D5024} = {F3C37912-A09C-436B-9F9D-2A34614D5024}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +34,14 @@ Global
 		{73062BB6-3307-46D6-8B54-BCB1C9A67FD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73062BB6-3307-46D6-8B54-BCB1C9A67FD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73062BB6-3307-46D6-8B54-BCB1C9A67FD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3C37912-A09C-436B-9F9D-2A34614D5024}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3C37912-A09C-436B-9F9D-2A34614D5024}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3C37912-A09C-436B-9F9D-2A34614D5024}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3C37912-A09C-436B-9F9D-2A34614D5024}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AD15906-AC38-49E9-8040-EDC5A20D6B4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AD15906-AC38-49E9-8040-EDC5A20D6B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AD15906-AC38-49E9-8040-EDC5A20D6B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AD15906-AC38-49E9-8040-EDC5A20D6B4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

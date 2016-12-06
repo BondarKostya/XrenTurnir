@@ -7,16 +7,18 @@
         xmlns:localGrids="clr-namespace:SeinSport.Grids"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="588.157" ResizeMode="CanResize"
-        Loaded="Window_Loaded">
-    <TabControl TabStripPlacement="Bottom" x:Name="tabControl" Margin="20" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
-        <TabItem Header="Муж">
+        Loaded="Window_Loaded"
+        Closed="Window_Closed">
+    <TabControl TabStripPlacement="Bottom" x:Name="tabControl" Margin="20" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible">
+        <TabItem Header="Муж" ScrollViewer.VerticalScrollBarVisibility="Visible">
             <StackPanel x:Name="manPanel">
                 <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Content="Очистить" Click="Button_Click" Margin="5" Width="50" Height="30"/>
-                    <Button Content="Загрузить" Click="LoadClick" Margin="5" Width="50" Height="30"/>
-                    <Button Content="Сохранить" Click="SaveClick" Margin="5" Width="50" Height="30"/>
+                    <Button Content="Очистить" Click="Button_Click" Margin="5" Width="70" Height="30"/>
+                    <Button Content="Вычислить победителя" Click="Button_Click_1" Margin="5" Width="150" Height="30"/>
+                    <Button Content="Загрузить" Click="LoadClick" Margin="5" Width="70" Height="30"/>
+                    <Button Content="Сохранить" Click="SaveClick" Margin="5" Width="70" Height="30"/>
                 </WrapPanel>
-                <StackPanel x:Name="currentPanel">
+                <StackPanel x:Name="currentPanel" ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <StackPanel x:Name="currentView">
                         <local:CurrentSportListView x:Name="currentListView" DataContext="{x:Null}"/>
                     </StackPanel>
@@ -29,17 +31,27 @@
             <!--<Grid Background="#FFE5E5E5"/>-->
             <StackPanel x:Name="womanPanel">
                 <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Content="Очистить" Click="ToLastWoman" Margin="5" Width="50" Height="30"/>
-                    <Button Content="Загрузить" Click="LoadWomanClick" Margin="5" Width="50" Height="30"/>
-                    <Button Content="Сохранить" Click="SaveWomanClick" Margin="5" Width="50" Height="30"/>
+                    <Button Content="Очистить" Click="ToLastWoman" Margin="5" Width="70" Height="30"/>
+                    <Button Content="Вычислить победителя" Click="Button_Click_2" Margin="5" Width="150" Height="30"/>
+                    <Button Content="Загрузить" Click="LoadWomanClick" Margin="5" Width="70" Height="30"/>
+                    <Button Content="Сохранить" Click="SaveWomanClick" Margin="5" Width="70" Height="30"/>
                 </WrapPanel>
-                <StackPanel x:Name="currentWomanPanel">
+                <StackPanel x:Name="currentWomanPanel" ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <StackPanel x:Name="currentWomanView">
                         <local:CurrentSportListView x:Name="currentWomanListView" DataContext="{x:Null}"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel x:Name="sportWomanPanel">
                 </StackPanel>
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="Настройки">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="IP:"Margin="5"/>
+                    <TextBox x:Name="ipBox" MinWidth="300"/>
+                </StackPanel>
+                <Button Content="Connect" Click="Button_Click_3"/>
             </StackPanel>
         </TabItem>
     </TabControl>

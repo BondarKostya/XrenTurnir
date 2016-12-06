@@ -8,9 +8,9 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel>
         <TextBlock x:Name="level"/>
-        <ListView x:Name="sportList" ItemsSource="{Binding}" Margin="10">
+        <ListView x:Name="sportList" ItemsSource="{Binding}" Margin="10" MaxHeight="500">
             <ListView.View>
-                <GridView>
+                <GridView ScrollViewer.VerticalScrollBarVisibility="Visible">
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>

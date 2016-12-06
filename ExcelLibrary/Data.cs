@@ -8,10 +8,18 @@ namespace ExcelLibrary
 {
     public class Data
     {
-        public const int Low = 60;
-        public const int Medium = 80;
-        public const int Hard = 100;
-        public const int TryHard = 150;
+        public const int c59 = 59;
+        public const int c66 = 66;
+        public const int c74 = 74;
+        public const int c83 = 83;
+        public const int c93 = 93;
+        public const int c105 = 105;
+
+        public const int c47 = 47;
+        public const int c52 = 52;
+        public const int c57 = 57;
+        public const int c63 = 63;
+        public const int c72 = 72;
 
         private double _p1;
         private double _p2;
@@ -94,6 +102,24 @@ namespace ExcelLibrary
             }
         }
 
+        public void CalculateSumm()
+        {
+            double max1;
+            double max2;
+            double max3;
+
+            max1 = (_p1 > _p2) ? _p1 : _p2;
+            max1 = (max1 > _p3) ? max1 : _p3;
+
+            max2 = (_j1 > _j2) ? _j1 : _j2;
+            max2 = (max2 > _j3) ? max2 : _j3;
+
+            max3 = (_t1 > _t2) ? _t1 : _t2;
+            max3 = (max3 > _t3) ? max3 : _t3;
+
+            this.Summ = max1 + max2 + max3;
+        }
+
         public double p1 { get { return _p1; } set { _p1 = value; Compile('p'); } }
         public double p2 { get { return _p2; } set { _p2 = value; Compile('p'); } }
         public double p3 { get { return _p3; } set { _p3 = value; Compile('p'); } }
@@ -115,7 +141,7 @@ namespace ExcelLibrary
         public string Sity { get; set; }
         public string Assotiation { get; set; }
         public string Club { get; set; }
-        public double Weight { get; set; }
+        public string Weight { get; set; }
         public double kWilis { get; set; }
 
         public string Prised { get; set; }
@@ -140,7 +166,7 @@ namespace ExcelLibrary
             Sity = string.Empty;
             Assotiation = string.Empty;
             Club = string.Empty;
-            Weight = 0;
+            Weight = string.Empty;
             kWilis = 0;
             Prised = string.Empty;
             Jym = string.Empty;
@@ -187,6 +213,33 @@ namespace ExcelLibrary
             result.Add(Place.ToString());
             result.Add(NormFlag.ToString());
             result.Add(Points.ToString());
+
+            return result;
+        }
+
+        public WcfLiblary.Data ToData()
+        {
+            WcfLiblary.Data result = new WcfLiblary.Data();
+
+            result.Assotiation = Assotiation;
+            result.Birthday = Birthday;
+            result.Club = Club;
+            result.j1 = j1;
+            result.j2 = j2;
+            result.j3 = j3;
+            result.Level = Level;
+            result.Name = Name;
+            result.Number = Number;
+            result.p1 = p1;
+            result.p2 = p2;
+            result.p3 = p3;
+            result.Sity = Sity;
+            result.State = State;
+            result.t1 = t1;
+            result.t2 = t2;
+            result.t3 = t3;
+            result.Trainers = Trainers;
+            result.Weight = Weight;
 
             return result;
         }

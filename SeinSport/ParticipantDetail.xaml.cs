@@ -25,27 +25,29 @@ namespace SeinSport
             initDetailFormWithModel();
         }
 
+        public Sport.SportServiceClient client;
+
         public void initDetailFormWithModel()
         {
-            fioTB.Text = "Бондар К.Б";
-            clubTB.Text = "Бондар К.Б";
-            trenerTB.Text = "Бондар К.Б";
+            //fioTB.Text = "Бондар К.Б";
+            //clubTB.Text = "Бондар К.Б";
+            //trenerTB.Text = "Бондар К.Б";
 
-            bornTB.Text = "Бондар К.Б";
-            weightTB.Text = "Бондар К.Б";
-            categoryTB.Text = "Бондар К.Б";
+            //bornTB.Text = "Бондар К.Б";
+            //weightTB.Text = "Бондар К.Б";
+            //categoryTB.Text = "Бондар К.Б";
 
-            exers1_1.Text = "Бондар К.Б";
-            exers1_2.Text = "Бондар К.Б";
-            exers1_3.Text = "Бондар К.Б";
+            //exers1_1.Text = "Бондар К.Б";
+            //exers1_2.Text = "Бондар К.Б";
+            //exers1_3.Text = "Бондар К.Б";
 
-            exers2_1.Text = "Бондар К.Б";
-            exers2_2.Text = "Бондар К.Б";
-            exers2_3.Text = "Бондар К.Б";
+            //exers2_1.Text = "Бондар К.Б";
+            //exers2_2.Text = "Бондар К.Б";
+            //exers2_3.Text = "Бондар К.Б";
 
-            exers3_1.Text = "Бондар К.Б";
-            exers3_2.Text = "Бондар К.Б";
-            exers3_3.Text = "Бондар К.Б";
+            //exers3_1.Text = "Бондар К.Б";
+            //exers3_2.Text = "Бондар К.Б";
+            //exers3_3.Text = "Бондар К.Б";
 
         }
 
@@ -57,7 +59,10 @@ namespace SeinSport
 
         private void timerSwitcher_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: timer switch click
+            var oldData = this.DataContext as ExcelLibrary.Data;
+            var data = oldData.ToData();
+            if (client != null)
+                client.SetData(data);
         }
     }
 }
