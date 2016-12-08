@@ -120,17 +120,17 @@ namespace ExcelLibrary
             this.Summ = max1 + max2 + max3;
         }
 
-        public double p1 { get { return _p1; } set { _p1 = value; Compile('p'); } }
-        public double p2 { get { return _p2; } set { _p2 = value; Compile('p'); } }
-        public double p3 { get { return _p3; } set { _p3 = value; Compile('p'); } }
+        public double p1 { get { return _p1; } set { _p1 = value; CurrentTry = value; } }
+        public double p2 { get { return _p2; } set { _p2 = value; CurrentTry = value; } }
+        public double p3 { get { return _p3; } set { _p3 = value; CurrentTry = value; } }
 
-        public double j1 { get { return _j1; } set { _j1 = value; Compile('j'); } }
-        public double j2 { get { return _j2; } set { _j2 = value; Compile('j'); } }
-        public double j3 { get { return _j3; } set { _j3 = value; Compile('j'); } }
+        public double j1 { get { return _j1; } set { _j1 = value; CurrentTry = value; } }
+        public double j2 { get { return _j2; } set { _j2 = value; CurrentTry = value; } }
+        public double j3 { get { return _j3; } set { _j3 = value; CurrentTry = value; } }
 
-        public double t1 { get { return _t1; } set { _t1 = value; Compile('t'); } }
-        public double t2 { get { return _t2; } set { _t2 = value; Compile('t'); } }
-        public double t3 { get { return _t3; } set { _t3 = value; Compile('t'); } }
+        public double t1 { get { return _t1; } set { _t1 = value; CurrentTry = value; } }
+        public double t2 { get { return _t2; } set { _t2 = value; CurrentTry = value; } }
+        public double t3 { get { return _t3; } set { _t3 = value; CurrentTry = value; } }
 
 
         public int Number { get; set; }
@@ -156,6 +156,8 @@ namespace ExcelLibrary
         public double Points { get; set; }
         public string Trainers { get; set; }
 
+        public double CurrentTry { get; set; }
+
         public Data()
         {
             Number = 0;
@@ -179,6 +181,40 @@ namespace ExcelLibrary
             Trainers = string.Empty;
 
 
+        }
+
+        public Data(WcfLiblary.Data data)
+        {
+
+            this.Assotiation = data.Assotiation;
+            this.Birthday = data.Birthday;
+            this.Club = data.Club;
+            this.j1 = data.j1;
+            this.j2 = data.j2;
+            this.j3 = data.j3;
+            this.Level = data.Level;
+            this.Name = data.Name;
+            this.Number = data.Number;
+            this.p1 = data.p1;
+            this.p2 = data.p2;
+            this.p3 = data.p3;
+            this.Sity = data.Sity;
+            this.State = data.State;
+            this.t1 = data.t1;
+            this.t2 = data.t2;
+            this.t3 = data.t3;
+            this.Trainers = data.Trainers;
+            this.Weight = data.Weight;
+
+            kWilis = 0;
+            Prised = string.Empty;
+            Jym = string.Empty;
+            Alpha = string.Empty;
+            Taga = string.Empty;
+            Summ = 0;
+            Place = 0;
+            NormFlag = false;
+            Points = 0;
         }
 
         public List<string> ToStringList()
@@ -241,6 +277,7 @@ namespace ExcelLibrary
             result.t3 = t3;
             result.Trainers = Trainers;
             result.Weight = Weight;
+            result.CurrentTry = CurrentTry;
 
             return result;
         }

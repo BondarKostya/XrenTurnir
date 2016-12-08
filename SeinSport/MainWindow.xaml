@@ -83,9 +83,15 @@
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="IP:" Margin="5"/>
-                    <TextBox x:Name="ipBox" MinWidth="300"/>
+                    <TextBox x:Name="ipBox" Text="127.0.0.1" MinWidth="300"/>
                 </StackPanel>
-                <Button Content="Connect" Click="Button_Click_3"/>
+                <Button Content="Очередь" Click="Button_Click_3"/>
+                
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="IP:" Margin="5"/>
+                    <TextBox x:Name="ipBoxViwers" Text="127.0.0.1" MinWidth="300"/>
+                </StackPanel>
+                <Button Content="Зрители" Click="Button_Click_6"/>
             </StackPanel>
         </TabItem>
     </TabControl>

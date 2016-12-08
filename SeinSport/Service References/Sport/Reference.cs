@@ -20,6 +20,12 @@ namespace SeinSport.Sport {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISportService/SetData", ReplyAction="http://tempuri.org/ISportService/SetDataResponse")]
         System.Threading.Tasks.Task SetDataAsync(WcfLiblary.Data value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISportService/SetDatas", ReplyAction="http://tempuri.org/ISportService/SetDatasResponse")]
+        void SetDatas(WcfLiblary.Data[] value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISportService/SetDatas", ReplyAction="http://tempuri.org/ISportService/SetDatasResponse")]
+        System.Threading.Tasks.Task SetDatasAsync(WcfLiblary.Data[] value);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,6 +61,14 @@ namespace SeinSport.Sport {
         
         public System.Threading.Tasks.Task SetDataAsync(WcfLiblary.Data value) {
             return base.Channel.SetDataAsync(value);
+        }
+        
+        public void SetDatas(WcfLiblary.Data[] value) {
+            base.Channel.SetDatas(value);
+        }
+        
+        public System.Threading.Tasks.Task SetDatasAsync(WcfLiblary.Data[] value) {
+            return base.Channel.SetDatasAsync(value);
         }
     }
 }

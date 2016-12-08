@@ -24,10 +24,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Data" nillable="true" type="tns:Data" />
-  <xs:complexType name="ArrayOfData">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Data" nillable="true" type="tns:Data" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfData" nillable="true" type="tns:ArrayOfData" />
 </xs:schema>

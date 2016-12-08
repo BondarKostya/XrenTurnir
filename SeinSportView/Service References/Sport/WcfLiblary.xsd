@@ -5,6 +5,7 @@
       <xs:element minOccurs="0" name="Assotiation" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Birthday" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Club" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrentTry" type="xs:double" />
       <xs:element minOccurs="0" name="Level" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Number" type="xs:int" />
@@ -24,4 +25,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Data" nillable="true" type="tns:Data" />
+  <xs:complexType name="ArrayOfData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Data" nillable="true" type="tns:Data" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfData" nillable="true" type="tns:ArrayOfData" />
 </xs:schema>

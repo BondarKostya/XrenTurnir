@@ -16,6 +16,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeinSportView", "SeinSportV
 		{F3C37912-A09C-436B-9F9D-2A34614D5024} = {F3C37912-A09C-436B-9F9D-2A34614D5024}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeinSportTable", "SeinSportTable\SeinSportTable.csproj", "{5A3FFAC6-E6FA-4A60-BDFD-D60E9D6BE0FE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F3C37912-A09C-436B-9F9D-2A34614D5024} = {F3C37912-A09C-436B-9F9D-2A34614D5024}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +47,10 @@ Global
 		{8AD15906-AC38-49E9-8040-EDC5A20D6B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AD15906-AC38-49E9-8040-EDC5A20D6B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AD15906-AC38-49E9-8040-EDC5A20D6B4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A3FFAC6-E6FA-4A60-BDFD-D60E9D6BE0FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A3FFAC6-E6FA-4A60-BDFD-D60E9D6BE0FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A3FFAC6-E6FA-4A60-BDFD-D60E9D6BE0FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A3FFAC6-E6FA-4A60-BDFD-D60E9D6BE0FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

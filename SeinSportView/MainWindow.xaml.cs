@@ -36,7 +36,7 @@ namespace SeinSportView
 
         private void SportService_OnNewChampion(Data obj)
         {
-            this.DataContext = obj;
+            this.DataContext = obj;            
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -48,8 +48,8 @@ namespace SeinSportView
         {
             if(host== null)
             {
-                host = new ServiceHost(typeof(SportService), new Uri(string.Format("http://{0}:8097/Sport", ipBox.Text)));
-                host.AddServiceEndpoint(typeof(ISportService), new WSHttpBinding(), string.Format("http://{0}:8097/Sport", ipBox.Text));                
+                host = new ServiceHost(typeof(SportService), new Uri(string.Format("http://{0}:8098/Sport", ipBox.Text)));
+                host.AddServiceEndpoint(typeof(ISportService), new WSHttpBinding(), string.Format("http://{0}:8098/Sport", ipBox.Text));                
             }
 
             host.Open();

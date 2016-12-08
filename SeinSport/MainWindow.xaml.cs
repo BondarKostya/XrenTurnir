@@ -33,6 +33,7 @@ namespace SeinSport
         private List<ExcelLibrary.Data> championsFemale;
 
         Sport.SportServiceClient client;
+        Sport.SportServiceClient viwersClient;
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -49,6 +50,7 @@ namespace SeinSport
             //sportPanel.Children.Add(sportView);
             //sportPanel.Children.Add(testView);      
 
+            client = new Sport.SportServiceClient(new WSHttpBinding(), new EndpointAddress(string.Format("http://{0}:8098/Sport", ipBox.Text)));
         }
 
         //private List<ExcelLibrary.Data> Init(bool first = true)
@@ -188,6 +190,13 @@ namespace SeinSport
         {
             panel.Children.Clear();
 
+            try
+            {
+                if (client.State != CommunicationState.Opened)
+                    client.Open();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+
             SportListView view = new SportListView();
             view.client = client;
             view.level.Text = "Учасники:";
@@ -263,6 +272,8 @@ namespace SeinSport
                 human.kWilis = ExcelLibrary.Engine.GetKWilks(human.Weight.ToString(), true);
                 human.SummKU = ExcelLibrary.Engine.GetPoint(human.Summ, human.Weight.ToString(), true);
             }
+
+            MessageBox.Show("Выполнено");
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -274,20 +285,34 @@ namespace SeinSport
                 human.kWilis = ExcelLibrary.Engine.GetKWilks(human.Weight.ToString(), false);
                 human.SummKU = ExcelLibrary.Engine.GetPoint(human.Summ, human.Weight.ToString(), false);
             }
+            MessageBox.Show("Выполнено");
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
             if (client != null)
                 client.Close();
+
+            if (viwersClient != null)
+                viwersClient.Close();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            if (client == null)
-                client = new Sport.SportServiceClient(new WSHttpBinding(), new EndpointAddress(string.Format("http://{0}:8097/Sport", ipBox.Text)));
+            try
+            {
+                if (client == null)
+                    client = new Sport.SportServiceClient(new WSHttpBinding(), new EndpointAddress(string.Format("http://{0}:8098/Sport", ipBox.Text)));
 
-            client.Open();
+                client.Open();
+
+                if (client.State == CommunicationState.Opened)
+                    MessageBox.Show("Подключено");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
@@ -299,6 +324,13 @@ namespace SeinSport
 
             currentListView.DataContext = data;
             currentListView.Update();
+
+            List<WcfLiblary.Data> values = new List<WcfLiblary.Data>(data.Count);
+            foreach (var d in data)
+            {
+                values.Add(d.ToData());
+            }
+            client.SetDatas(values.ToArray());
         }
 
         private int Comparer(ExcelLibrary.Data x, ExcelLibrary.Data y)
@@ -498,8 +530,33 @@ namespace SeinSport
             Comparison<ExcelLibrary.Data> comp = new Comparison<ExcelLibrary.Data>(ComparerFem);
             data.Sort(comp);
 
-            currentListView.DataContext = data;
-            currentListView.Update();
+            currentWomanListView.DataContext = data;
+            currentWomanListView.Update();
+
+            List<WcfLiblary.Data> values = new List<WcfLiblary.Data>(data.Count);
+            foreach (var d in data)
+            {
+                values.Add(d.ToData());
+            }
+            client.SetDatas(values.ToArray());
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (viwersClient == null)
+                    viwersClient = new Sport.SportServiceClient(new WSHttpBinding(), new EndpointAddress(string.Format("http://{0}:8097/Sport", ipBox.Text)));
+
+                viwersClient.Open();
+
+                if (viwersClient.State == CommunicationState.Opened)
+                    MessageBox.Show("Подключено");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

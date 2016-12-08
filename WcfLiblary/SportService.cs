@@ -11,9 +11,16 @@ namespace WcfLiblary
     public class SportService : ISportService
     {
         public static event Action<Data> OnNewChampion;
+        public static event Action<List<Data>> OnNewQuery;
+
         public void SetData(Data value)
         {
             OnNewChampion?.Invoke(value);
+        }
+
+        public void SetDatas(List<Data> values)
+        {
+            OnNewQuery?.Invoke(values);
         }
     }
 }

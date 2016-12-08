@@ -13,7 +13,9 @@ namespace WcfLiblary
     {
         [OperationContract]
         void SetData(Data value);
-        
+
+        [OperationContract]
+        void SetDatas(List<Data> value);
     }
 
     // Используйте контракт данных, как показано на следующем примере, чтобы добавить сложные типы к сервисным операциям.
@@ -75,5 +77,8 @@ namespace WcfLiblary
         
         [DataMember]
         public string Trainers { get; set; }
+
+        [DataMember]
+        public double CurrentTry { get; set; }
     }
 }

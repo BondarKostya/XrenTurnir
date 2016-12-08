@@ -8,108 +8,22 @@
         Title="MainWindow" Height="400" Width="630"
         Loaded="Window_Loaded"
         Closed="Window_Closed">
-    <TabControl Height="370" Width="600">
+    <TabControl Margin="10">
         <TabItem Header="View">
-            <Grid Margin="-2,0,2,0" Background="AliceBlue">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <StackPanel Margin="77,12,294,231" Orientation="Vertical">
-                    <TextBox Margin="0,0,0,5" x:Name="fioTB" Height="23" TextWrapping="Wrap" Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
-                    <TextBox Margin="0,0,0,5" x:Name="clubTB" Height="23" TextWrapping="Wrap" Text="{Binding Path=Club, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
-
-                </StackPanel>
-                <StackPanel Margin="10,8,0,0" Orientation="Vertical" HorizontalAlignment="Left" Width="67" Height="83" VerticalAlignment="Top">
-                    <Label Margin="0,0,0,3" x:Name="label" Content="ФИО" VerticalAlignment="Top" Foreground="White" FontFamily="Verdana" FontSize="13"/>
-                    <Label Foreground="White" FontFamily="Verdana" FontSize="13" Margin="0,0,0,3" x:Name="label_Copy" Content="Клуб" VerticalAlignment="Top"/>
-
-                </StackPanel>
-                <StackPanel Margin="285,10,204,233" Orientation="Vertical">
-                    <!--<Label Foreground="White" FontFamily="Verdana" FontSize="13" Margin="0,0,0,3" x:Name="label1" Content="Дата рожд." VerticalAlignment="Top"/>-->
-                    <Label Foreground="White" FontFamily="Verdana" FontSize="13" Margin="0,0,0,3" x:Name="label1_Copy" Content="Вес" VerticalAlignment="Top"/>
-                    <!--<Label Foreground="White" FontFamily="Verdana" FontSize="13" Margin="0,0,0,3" x:Name="label1_Copy1" Content="Категория" VerticalAlignment="Top"/>-->
-                    <Label Foreground="White" FontFamily="Verdana" FontSize="13" Margin="0,0,0,3" x:Name="label_Copy1" Content="Тренер&#xD;&#xA;" VerticalAlignment="Top" Height="31"/>
-
-                </StackPanel>
-                <StackPanel Margin="375,12,0,231" Orientation="Vertical" HorizontalAlignment="Left" Width="189">
-                    <!--<TextBox Margin="0,0,0,5" x:Name="bornTB" Height="23" TextWrapping="Wrap" Text="{Binding Path=Birthday, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>-->
-                    <TextBox Margin="0,0,0,5" x:Name="weightTB" Height="23" TextWrapping="Wrap" Text="{Binding Path=Weight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
-                    <!--<TextBox Margin="0,0,0,5" x:Name="categoryTB" Height="23" TextWrapping="Wrap" Text="{Binding Path=Level, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>-->
-                    <TextBox Margin="0,0,0,5" x:Name="trenerTB" Height="23" TextWrapping="Wrap" Text="{Binding Path=Trainers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
-
-                </StackPanel>
-                <Grid Margin="10,151,11,10" ShowGridLines="False">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <Border Grid.Column="0" BorderBrush="White" BorderThickness="1">
-                    </Border>
-                    <Border Grid.Column="1" BorderBrush="White" BorderThickness="1">
-                    </Border>
-                    <Border Grid.Column="2" BorderBrush="White" BorderThickness="1">
-                    </Border>
-                    <Grid  Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Height="161" VerticalAlignment="Top" Width="185">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-                        <Border Grid.Row="1" BorderBrush="White" BorderThickness="1">
-                        </Border>
-                        <Border Grid.Row="3" BorderBrush="White" BorderThickness="1">
-                        </Border>
-                        <Label Grid.Row="0" Content="Упражнение 1" HorizontalAlignment="Center" FontSize="15" FontFamily="Segoe UI Black" Foreground="White" />
-                        <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="{Binding Path=p1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="1" x:Name="exers1_1" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
-                        <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="{Binding Path=p2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="2" x:Name="exers1_2" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
-                        <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="{Binding Path=p3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="3" x:Name="exers1_3" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
-
-                    </Grid>
-                    <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Height="161" VerticalAlignment="Top" Width="185">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Content="Упражнение 2" HorizontalAlignment="Center" FontSize="15" FontFamily="Segoe UI Black" Foreground="White"/>
-                        <Border Grid.Row="1" BorderBrush="White" BorderThickness="1">
-                        </Border>
-                        <Border Grid.Row="3" BorderBrush="White" BorderThickness="1">
-                        </Border>
-                        <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="{Binding Path=j1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="1" x:Name="exers2_1" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
-                        <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="{Binding Path=j2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="2" x:Name="exers2_2" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
-                        <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="{Binding Path=j3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="3" x:Name="exers2_3" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
-
-                    </Grid>
-                    <Grid Name="ThirdGrid" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Height="161" VerticalAlignment="Top" Width="185">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Content="Упражнение 3" HorizontalAlignment="Center" FontSize="15" FontFamily="Segoe UI Black" Foreground="White"/>
-                        <Border Grid.Row="1" BorderBrush="White" BorderThickness="1">
-                        </Border>
-                        <Border Grid.Row="3" BorderBrush="White" BorderThickness="1">
-                        </Border>
-                        <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="{Binding Path=t1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="1" x:Name="exers3_1" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
-                        <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="{Binding Path=t2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="2" x:Name="exers3_2" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
-                        <TextBox Margin="10,10,10,10" Foreground="White"  HorizontalContentAlignment="Center" Text="{Binding Path=t3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="3" x:Name="exers3_3" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" Background="{x:Null}"/>
-
-                    </Grid>
-                </Grid>
-            </Grid>
+            <DockPanel LastChildFill="False" HorizontalAlignment="Center">
+                <TextBlock Text="{Binding Path=Name}" FontSize="36" DockPanel.Dock="Top" Margin="20"/>
+                <TextBlock Text="{Binding Path=Club}" FontSize="36" DockPanel.Dock="Top" Margin="20"/>
+                <TextBlock Text="{Binding Path=Weight}" FontSize="36" DockPanel.Dock="Top" Margin="20"/>
+                <TextBlock Text="Текущий подход" FontSize="36" DockPanel.Dock="Left" Margin="20"/>
+                <TextBlock Text="{Binding Path=CurrentTry}" FontSize="36" DockPanel.Dock="Left" Margin="20"/>
+                <TextBlock Text="0" DockPanel.Dock="Right" FontSize="36" x:Name="timerBlock" Margin="20"/>
+            </DockPanel>
         </TabItem>
         <TabItem Header="Настройки" Margin="5">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="IP:"/>
-                    <TextBox x:Name="ipBox" MinWidth="300"/>
+                    <TextBox x:Name="ipBox" Text="127.0.0.1" MinWidth="300"/>
                 </StackPanel>
                 <Button Content="Connect" Click="Button_Click"/>
             </StackPanel>

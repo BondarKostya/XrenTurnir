@@ -13,16 +13,4 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="SetDatas">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WcfLiblary" minOccurs="0" name="value" nillable="true" type="q2:ArrayOfData" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="SetDatasResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
 </xs:schema>
