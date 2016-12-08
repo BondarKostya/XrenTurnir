@@ -33,7 +33,7 @@ namespace SeinSport
         private List<ExcelLibrary.Data> championsFemale;
 
         Sport.SportServiceClient client;
-        
+
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -48,9 +48,9 @@ namespace SeinSport
 
             //sportPanel.Children.Add(sportView);
             //sportPanel.Children.Add(testView);      
-                           
+
         }
-               
+
         //private List<ExcelLibrary.Data> Init(bool first = true)
         //{
         //    List<ExcelLibrary.Data> result = new List<ExcelLibrary.Data>();
@@ -256,7 +256,7 @@ namespace SeinSport
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            foreach(var human in championsMale)
+            foreach (var human in championsMale)
             {
                 human.CalculateSumm();
 
@@ -276,16 +276,228 @@ namespace SeinSport
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            if(client!=null)
-            client.Close();
+            if (client != null)
+                client.Close();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            if(client == null)
+            if (client == null)
                 client = new Sport.SportServiceClient(new WSHttpBinding(), new EndpointAddress(string.Format("http://{0}:8097/Sport", ipBox.Text)));
 
             client.Open();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            var data = currentListView.DataContext as List<ExcelLibrary.Data>;
+
+            Comparison<ExcelLibrary.Data> comp = new Comparison<ExcelLibrary.Data>(Comparer);
+            data.Sort(comp);
+
+            currentListView.DataContext = data;
+            currentListView.Update();
+        }
+
+        private int Comparer(ExcelLibrary.Data x, ExcelLibrary.Data y)
+        {
+            if (rbU1.IsChecked == true)
+            {
+                if (rbP1.IsChecked == true)
+                {
+                    if (x.p1 > y.p1)
+                        return -1;
+                    if (x.p1 == y.p1)
+                        return 0;
+                    if (x.p1 < y.p1)
+                        return 1;
+                }
+                else if (rbP2.IsChecked == true)
+                {
+                    if (x.p2 > y.p2)
+                        return -1;
+                    if (x.p2 == y.p2)
+                        return 0;
+                    if (x.p2 < y.p2)
+                        return 1;
+                }
+                else if (rbP3.IsChecked == true)
+                {
+                    if (x.p3 > y.p3)
+                        return -1;
+                    if (x.p3 == y.p3)
+                        return 0;
+                    if (x.p3 < y.p3)
+                        return 1;
+                }
+            }
+            else if (rbU2.IsChecked == true)
+            {
+                if (rbP1.IsChecked == true)
+                {
+                    if (x.j1 > y.j1)
+                        return -1;
+                    if (x.j1 == y.j1)
+                        return 0;
+                    if (x.j1 < y.j1)
+                        return 1;
+                }
+                else if (rbP2.IsChecked == true)
+                {
+                    if (x.j2 > y.j2)
+                        return -1;
+                    if (x.j2 == y.j2)
+                        return 0;
+                    if (x.j2 < y.j2)
+                        return 1;
+                }
+                else if (rbP3.IsChecked == true)
+                {
+                    if (x.j3 > y.j3)
+                        return -1;
+                    if (x.j3 == y.j3)
+                        return 0;
+                    if (x.j3 < y.j3)
+                        return 1;
+                }
+            }
+            else if (rbU3.IsChecked == true)
+            {
+                if (rbP1.IsChecked == true)
+                {
+                    if (x.t1 > y.t1)
+                        return -1;
+                    if (x.t1 == y.t1)
+                        return 0;
+                    if (x.t1 < y.t1)
+                        return 1;
+                }
+                else if (rbP2.IsChecked == true)
+                {
+                    if (x.t2 > y.t2)
+                        return -1;
+                    if (x.t2 == y.t2)
+                        return 0;
+                    if (x.t2 < y.t2)
+                        return 1;
+                }
+                else if (rbP3.IsChecked == true)
+                {
+                    if (x.t3 > y.t3)
+                        return -1;
+                    if (x.t3 == y.t3)
+                        return 0;
+                    if (x.t3 < y.t3)
+                        return 1;
+                }
+            }
+            return 0;
+        }
+
+        private int ComparerFem(ExcelLibrary.Data x, ExcelLibrary.Data y)
+        {
+            if (rbU1F.IsChecked == true)
+            {
+                if (rbP1F.IsChecked == true)
+                {
+                    if (x.p1 > y.p1)
+                        return -1;
+                    if (x.p1 == y.p1)
+                        return 0;
+                    if (x.p1 < y.p1)
+                        return 1;
+                }
+                else if (rbP2F.IsChecked == true)
+                {
+                    if (x.p2 > y.p2)
+                        return -1;
+                    if (x.p2 == y.p2)
+                        return 0;
+                    if (x.p2 < y.p2)
+                        return 1;
+                }
+                else if (rbP3F.IsChecked == true)
+                {
+                    if (x.p3 > y.p3)
+                        return -1;
+                    if (x.p3 == y.p3)
+                        return 0;
+                    if (x.p3 < y.p3)
+                        return 1;
+                }
+            }
+            else if (rbU2F.IsChecked == true)
+            {
+                if (rbP1F.IsChecked == true)
+                {
+                    if (x.j1 > y.j1)
+                        return -1;
+                    if (x.j1 == y.j1)
+                        return 0;
+                    if (x.j1 < y.j1)
+                        return 1;
+                }
+                else if (rbP2F.IsChecked == true)
+                {
+                    if (x.j2 > y.j2)
+                        return -1;
+                    if (x.j2 == y.j2)
+                        return 0;
+                    if (x.j2 < y.j2)
+                        return 1;
+                }
+                else if (rbP3F.IsChecked == true)
+                {
+                    if (x.j3 > y.j3)
+                        return -1;
+                    if (x.j3 == y.j3)
+                        return 0;
+                    if (x.j3 < y.j3)
+                        return 1;
+                }
+            }
+            else if (rbU3F.IsChecked == true)
+            {
+                if (rbP1F.IsChecked == true)
+                {
+                    if (x.t1 > y.t1)
+                        return -1;
+                    if (x.t1 == y.t1)
+                        return 0;
+                    if (x.t1 < y.t1)
+                        return 1;
+                }
+                else if (rbP2F.IsChecked == true)
+                {
+                    if (x.t2 > y.t2)
+                        return -1;
+                    if (x.t2 == y.t2)
+                        return 0;
+                    if (x.t2 < y.t2)
+                        return 1;
+                }
+                else if (rbP3F.IsChecked == true)
+                {
+                    if (x.t3 > y.t3)
+                        return -1;
+                    if (x.t3 == y.t3)
+                        return 0;
+                    if (x.t3 < y.t3)
+                        return 1;
+                }
+            }
+            return 0;
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            var data = currentListView.DataContext as List<ExcelLibrary.Data>;
+
+            Comparison<ExcelLibrary.Data> comp = new Comparison<ExcelLibrary.Data>(ComparerFem);
+            data.Sort(comp);
+
+            currentListView.DataContext = data;
+            currentListView.Update();
         }
     }
 }

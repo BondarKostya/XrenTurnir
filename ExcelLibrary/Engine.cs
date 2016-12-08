@@ -529,14 +529,17 @@ namespace ExcelLibrary
 
                 string[] w = weight.Split(',');
 
-                
+
                 string res = ws.Cell(int.Parse(w[0]), int.Parse(w[1]) + 1).Value.ToString();
 
                 double.TryParse(res, out result);
-            }
-            catch (Exception ex) { }
 
-            return result;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
         }
     }
 }

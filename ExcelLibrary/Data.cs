@@ -212,6 +212,7 @@ namespace ExcelLibrary
             result.Add(Summ.ToString());
             result.Add(Place.ToString());
             result.Add(NormFlag.ToString());
+            result.Add(SummKU.ToString());
             result.Add(Points.ToString());
 
             return result;

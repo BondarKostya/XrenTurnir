@@ -18,6 +18,23 @@
                     <Button Content="Загрузить" Click="LoadClick" Margin="5" Width="70" Height="30"/>
                     <Button Content="Сохранить" Click="SaveClick" Margin="5" Width="70" Height="30"/>
                 </WrapPanel>
+                <StackPanel Orientation="Horizontal">
+                    <GroupBox Header="Упражнение">
+                        <StackPanel>
+                            <RadioButton x:Name="rbU1" Content="Присед" IsChecked="False"/>
+                            <RadioButton x:Name="rbU2" Content="Жим" IsChecked="False"/>
+                            <RadioButton x:Name="rbU3" Content="Тяга" IsChecked="False"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Подход">
+                        <StackPanel>
+                            <RadioButton x:Name="rbP1" Content="Первый" IsChecked="False"/>
+                            <RadioButton x:Name="rbP2" Content="Второй" IsChecked="False"/>
+                            <RadioButton x:Name="rbP3" Content="Третий" IsChecked="False"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Button Content="Сортировать" Click="Button_Click_4" Margin="5" />
+                </StackPanel>
                 <StackPanel x:Name="currentPanel" ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <StackPanel x:Name="currentView">
                         <local:CurrentSportListView x:Name="currentListView" DataContext="{x:Null}"/>
@@ -36,6 +53,23 @@
                     <Button Content="Загрузить" Click="LoadWomanClick" Margin="5" Width="70" Height="30"/>
                     <Button Content="Сохранить" Click="SaveWomanClick" Margin="5" Width="70" Height="30"/>
                 </WrapPanel>
+                <StackPanel Orientation="Horizontal">
+                    <GroupBox Header="Упражнение">
+                        <StackPanel>
+                            <RadioButton x:Name="rbU1F" Content="Присед" IsChecked="False"/>
+                            <RadioButton x:Name="rbU2F" Content="Жим" IsChecked="False"/>
+                            <RadioButton x:Name="rbU3F" Content="Тяга" IsChecked="False"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Подход">
+                        <StackPanel>
+                            <RadioButton x:Name="rbP1F" Content="Первый" IsChecked="False"/>
+                            <RadioButton x:Name="rbP2F" Content="Второй" IsChecked="False"/>
+                            <RadioButton x:Name="rbP3F" Content="Третий" IsChecked="False"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Button Content="Сортировать" Click="Button_Click_5" Margin="5" />
+                </StackPanel>
                 <StackPanel x:Name="currentWomanPanel" ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <StackPanel x:Name="currentWomanView">
                         <local:CurrentSportListView x:Name="currentWomanListView" DataContext="{x:Null}"/>
