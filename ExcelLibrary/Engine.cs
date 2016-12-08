@@ -37,6 +37,23 @@ namespace ExcelLibrary
             }
         }
 
+        private static void CalculatePlace(this List<Data> values)
+        {
+            values.Sort((x, y) =>
+            {
+                if (x.SummKU > y.SummKU)
+                    return -1;
+                else if (x.SummKU < y.SummKU)
+                    return 1;
+                else
+                    return 0;
+            });
+
+            int i = 1;
+            foreach (var value in values)
+                value.Place = i++;
+        }
+
         public static void ToExcel(this List<Data> values, string fileName, string worksheetTitle)
         {
             var wb = new XLWorkbook(); //create workbook
@@ -113,6 +130,14 @@ namespace ExcelLibrary
                     var hardValues = values.Where(x => double.Parse(x.Weight) > Data.c83 && double.Parse(x.Weight) < Data.c93).ToList();
                     var lowTryHardValues = values.Where(x => double.Parse(x.Weight) > Data.c93 && double.Parse(x.Weight) < Data.c105).ToList();
                     var tryHardValues = values.Where(x => double.Parse(x.Weight) > Data.c105).ToList();
+
+                    lowValues.CalculatePlace();
+                    lowMediumValues.CalculatePlace();
+                    mediumValues.CalculatePlace();
+                    lowHardValues.CalculatePlace();
+                    hardValues.CalculatePlace();
+                    lowTryHardValues.CalculatePlace();
+                    tryHardValues.CalculatePlace();
 
                     ws.Cell(c++, 1).Value = string.Format("Вагова категорія до {0} кг", Data.c59);
                     foreach (var value in lowValues)
@@ -214,6 +239,12 @@ namespace ExcelLibrary
                     var hardValues = values.Where(x => double.Parse(x.Weight) > Data.c63 && double.Parse(x.Weight) < Data.c72).ToList();
                     var tryHardValues = values.Where(x => double.Parse(x.Weight) > Data.c72).ToList();
 
+                    lowValues.CalculatePlace();
+                    lowMediumValues.CalculatePlace();
+                    mediumValues.CalculatePlace();
+                    lowHardValues.CalculatePlace();
+                    hardValues.CalculatePlace();
+                    tryHardValues.CalculatePlace();
 
                     ws.Cell(c++, 1).Value = string.Format("Вагова категорія до {0} кг", Data.c47);
                     foreach (var value in lowValues)
@@ -511,7 +542,7 @@ namespace ExcelLibrary
             return GetKWilks(weight, isMale) * summ;
         }
 
-        private static double GetKWilks(string weight, bool isMale)
+        public static double GetKWilks(string weight, bool isMale)
         {
             if (Wilks == null)
             {

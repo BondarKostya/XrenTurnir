@@ -260,6 +260,7 @@ namespace SeinSport
             {
                 human.CalculateSumm();
 
+                human.kWilis = ExcelLibrary.Engine.GetKWilks(human.Weight.ToString(), true);
                 human.SummKU = ExcelLibrary.Engine.GetPoint(human.Summ, human.Weight.ToString(), true);
             }
         }
@@ -270,6 +271,7 @@ namespace SeinSport
             {
                 human.CalculateSumm();
 
+                human.kWilis = ExcelLibrary.Engine.GetKWilks(human.Weight.ToString(), false);
                 human.SummKU = ExcelLibrary.Engine.GetPoint(human.Summ, human.Weight.ToString(), false);
             }
         }
