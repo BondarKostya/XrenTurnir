@@ -5,21 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SeinSportView"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="630"
+        Title="MainWindow" Height="400" Width="1100"
         Loaded="Window_Loaded"
         Closed="Window_Closed">
     <TabControl Margin="10">
         <TabItem Header="View">
-            <DockPanel LastChildFill="False" HorizontalAlignment="Center">
-                <TextBlock Text="{Binding Path=Name}" FontSize="36" DockPanel.Dock="Top" Margin="20"/>
-                <TextBlock Text="{Binding Path=Club}" FontSize="36" DockPanel.Dock="Top" Margin="20"/>
-                <TextBlock Text="{Binding Path=Weight}" FontSize="36" DockPanel.Dock="Top" Margin="20"/>
-                <TextBlock Text="Текущий подход" FontSize="36" DockPanel.Dock="Left" Margin="20"/>
-                <TextBlock Text="{Binding Path=CurrentTry}" FontSize="36" DockPanel.Dock="Left" Margin="20"/>
-                <TextBlock Text="0" DockPanel.Dock="Right" FontSize="36" x:Name="timerBlock" Margin="20"/>
+            <DockPanel LastChildFill="False" HorizontalAlignment="Center" Margin="10" MinWidth="1000">
+                <TextBlock Text="{Binding Path=Name}" HorizontalAlignment="Center" FontSize="48" DockPanel.Dock="Top" Margin="20"/>
+                <TextBlock Text="{Binding Path=Club}" HorizontalAlignment="Center" FontSize="36" DockPanel.Dock="Top" Margin="20"/>
+                <TextBlock Text="{Binding Path=Weight}" HorizontalAlignment="Center" FontSize="36" DockPanel.Dock="Top" Margin="20"/>
+                <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                    <DockPanel LastChildFill="False" MinWidth="950">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                            <TextBlock Text="Текущий подход:" FontSize="36" Margin="10"/>
+                            <TextBlock Text="{Binding Path=CurrentTry}" FontSize="36" Margin="20"/>
+                            <TextBlock Text="кг" FontSize="36" Margin="10"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" >
+                            <TextBlock Text="Таймер:" FontSize="36" Margin="10"/>
+                            <TextBlock Text="60" FontSize="36" x:Name="timerBlock" Margin="20"/>
+                            <TextBlock Text="с" x:Name="secondBlock" FontSize="36" Margin="10"/>
+                        </StackPanel>
+                    </DockPanel>
+                </StackPanel>
             </DockPanel>
         </TabItem>
-        <TabItem Header="Настройки" Margin="5">
+        <TabItem Header="Настройки">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="IP:"/>

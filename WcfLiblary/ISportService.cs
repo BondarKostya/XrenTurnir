@@ -16,6 +16,12 @@ namespace WcfLiblary
 
         [OperationContract]
         void SetDatas(List<Data> value);
+
+        [OperationContract]
+        void StartTimer();
+
+        [OperationContract]
+        void StopTimer();
     }
 
     // Используйте контракт данных, как показано на следующем примере, чтобы добавить сложные типы к сервисным операциям.
