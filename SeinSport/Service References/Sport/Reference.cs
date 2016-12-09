@@ -26,6 +26,18 @@ namespace SeinSport.Sport {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISportService/SetDatas", ReplyAction="http://tempuri.org/ISportService/SetDatasResponse")]
         System.Threading.Tasks.Task SetDatasAsync(WcfLiblary.Data[] value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISportService/StartTimer", ReplyAction="http://tempuri.org/ISportService/StartTimerResponse")]
+        void StartTimer();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISportService/StartTimer", ReplyAction="http://tempuri.org/ISportService/StartTimerResponse")]
+        System.Threading.Tasks.Task StartTimerAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISportService/StopTimer", ReplyAction="http://tempuri.org/ISportService/StopTimerResponse")]
+        void StopTimer();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISportService/StopTimer", ReplyAction="http://tempuri.org/ISportService/StopTimerResponse")]
+        System.Threading.Tasks.Task StopTimerAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -69,6 +81,22 @@ namespace SeinSport.Sport {
         
         public System.Threading.Tasks.Task SetDatasAsync(WcfLiblary.Data[] value) {
             return base.Channel.SetDatasAsync(value);
+        }
+        
+        public void StartTimer() {
+            base.Channel.StartTimer();
+        }
+        
+        public System.Threading.Tasks.Task StartTimerAsync() {
+            return base.Channel.StartTimerAsync();
+        }
+        
+        public void StopTimer() {
+            base.Channel.StopTimer();
+        }
+        
+        public System.Threading.Tasks.Task StopTimerAsync() {
+            return base.Channel.StopTimerAsync();
         }
     }
 }

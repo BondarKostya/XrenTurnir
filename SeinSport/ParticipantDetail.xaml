@@ -54,6 +54,24 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
+
+            <Button  x:Name="startTimer" Content="Запустить таймер" Margin="10" MinWidth="50" FontSize="15" BorderBrush="#FFFAFBF9" Foreground="White" Click="startTimer_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF52D8FF" Offset="0.791"/>
+                        <GradientStop Color="#FF3AB0D3" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+
+            <Button  x:Name="stopTimer" Content="Остановить таймер" Margin="10" MinWidth="50" FontSize="15" BorderBrush="#FFFAFBF9" Foreground="White" Click="stopTimer_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF52D8FF" Offset="0.791"/>
+                        <GradientStop Color="#FF3AB0D3" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
         </StackPanel>
 
         <Grid Margin="10" ShowGridLines="False">

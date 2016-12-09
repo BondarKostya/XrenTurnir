@@ -12,6 +12,8 @@ namespace WcfLiblary
     {
         public static event Action<Data> OnNewChampion;
         public static event Action<List<Data>> OnNewQuery;
+        public static event Action OnStartTimer;
+        public static event Action OnStopTimer;
 
         public void SetData(Data value)
         {
@@ -21,6 +23,16 @@ namespace WcfLiblary
         public void SetDatas(List<Data> values)
         {
             OnNewQuery?.Invoke(values);
+        }
+
+        public void StartTimer()
+        {
+            OnStartTimer?.Invoke();
+        }
+
+        public void StopTimer()
+        {
+            OnStopTimer?.Invoke();
         }
     }
 }

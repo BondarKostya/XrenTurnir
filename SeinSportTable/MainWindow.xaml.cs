@@ -34,11 +34,16 @@ namespace SeinSportTable
             if (host == null)
             {
                 host = new ServiceHost(typeof(SportService), new Uri(string.Format("http://{0}:8098/Sport", ipBox.Text)));
-                host.AddServiceEndpoint(typeof(ISportService), new WSHttpBinding(), string.Format("http://{0}:8098/Sport", ipBox.Text));
+                var binding = new WSHttpBinding();
+                binding.ReceiveTimeout = TimeSpan.FromHours(5);
+                binding.SendTimeout = TimeSpan.FromHours(5);
+                host.AddServiceEndpoint(typeof(ISportService), binding, string.Format("http://{0}:8098/Sport", ipBox.Text));
                 
             }
 
             host.Open();
+
+            (sender as Button).IsEnabled = false;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

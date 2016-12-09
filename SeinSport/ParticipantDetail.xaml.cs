@@ -64,5 +64,15 @@ namespace SeinSport
             if (client != null)
                 client.SetData(data);
         }
+
+        private void startTimer_Click(object sender, RoutedEventArgs e)
+        {
+            client?.StartTimer();
+        }
+
+        private void stopTimer_Click(object sender, RoutedEventArgs e)
+        {
+            client?.StopTimer();
+        }
     }
 }

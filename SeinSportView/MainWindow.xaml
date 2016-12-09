@@ -10,16 +10,16 @@
         Closed="Window_Closed">
     <TabControl Margin="10">
         <TabItem Header="View">
-            <DockPanel LastChildFill="False" HorizontalAlignment="Center">
+            <DockPanel LastChildFill="False" HorizontalAlignment="Center" Margin="10">
                 <TextBlock Text="{Binding Path=Name}" FontSize="36" DockPanel.Dock="Top" Margin="20"/>
                 <TextBlock Text="{Binding Path=Club}" FontSize="36" DockPanel.Dock="Top" Margin="20"/>
                 <TextBlock Text="{Binding Path=Weight}" FontSize="36" DockPanel.Dock="Top" Margin="20"/>
                 <TextBlock Text="Текущий подход" FontSize="36" DockPanel.Dock="Left" Margin="20"/>
                 <TextBlock Text="{Binding Path=CurrentTry}" FontSize="36" DockPanel.Dock="Left" Margin="20"/>
-                <TextBlock Text="0" DockPanel.Dock="Right" FontSize="36" x:Name="timerBlock" Margin="20"/>
+                <TextBlock Text="60" DockPanel.Dock="Right" FontSize="36" x:Name="timerBlock" Margin="20"/>
             </DockPanel>
         </TabItem>
-        <TabItem Header="Настройки" Margin="5">
+        <TabItem Header="Настройки">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="IP:"/>
