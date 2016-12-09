@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,12 +27,14 @@ namespace SeinSport
         }
 
         public Sport.SportServiceClient client;
+        public string IP { get; set; }
 
         private void sportList_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             ParticipantDetail detail = new ParticipantDetail();
             var data = (sender as ListView).SelectedItem as ExcelLibrary.Data;
             detail.DataContext = data;
+                        
             detail.client = client;
             detail.ShowDialog();
         }

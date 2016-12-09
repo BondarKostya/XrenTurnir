@@ -50,7 +50,7 @@ namespace SeinSport
             //sportPanel.Children.Add(sportView);
             //sportPanel.Children.Add(testView);      
 
-            client = new Sport.SportServiceClient(new WSHttpBinding(), new EndpointAddress(string.Format("http://{0}:8098/Sport", ipBox.Text)));
+            client = new Sport.SportServiceClient(new WSHttpBinding(), new EndpointAddress(string.Format("http://{0}:8097/Sport", ipBox.Text)));
         }
 
         //private List<ExcelLibrary.Data> Init(bool first = true)
@@ -205,7 +205,7 @@ namespace SeinSport
             {
                 CurrentSportListView currentView = currentPanel.Children[0] as CurrentSportListView;
                 currentView.level.Text = "Текущий подход:";
-                currentListView.client = client;
+                currentView.client = viwersClient;
 
                 var currentData = currentView.DataContext as List<ExcelLibrary.Data>;
 
@@ -302,7 +302,7 @@ namespace SeinSport
             try
             {
                 if (client == null)
-                    client = new Sport.SportServiceClient(new WSHttpBinding(), new EndpointAddress(string.Format("http://{0}:8098/Sport", ipBox.Text)));
+                    client = new Sport.SportServiceClient(new WSHttpBinding(), new EndpointAddress(string.Format("http://{0}:8097/Sport", ipBox.Text)));
 
                 client.Open();
 
@@ -330,7 +330,11 @@ namespace SeinSport
             {
                 values.Add(d.ToData());
             }
-            client.SetDatas(values.ToArray());
+            if (client != null && client.State == CommunicationState.Opened)
+            {
+                client.SetDatas(values.ToArray());
+            }
+            
         }
 
         private int Comparer(ExcelLibrary.Data x, ExcelLibrary.Data y)
@@ -525,7 +529,7 @@ namespace SeinSport
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
-            var data = currentListView.DataContext as List<ExcelLibrary.Data>;
+            var data = currentWomanListView.DataContext as List<ExcelLibrary.Data>;
 
             Comparison<ExcelLibrary.Data> comp = new Comparison<ExcelLibrary.Data>(ComparerFem);
             data.Sort(comp);
@@ -546,7 +550,7 @@ namespace SeinSport
             try
             {
                 if (viwersClient == null)
-                    viwersClient = new Sport.SportServiceClient(new WSHttpBinding(), new EndpointAddress(string.Format("http://{0}:8097/Sport", ipBox.Text)));
+                    viwersClient = new Sport.SportServiceClient(new WSHttpBinding(), new EndpointAddress(string.Format("http://{0}:8098/Sport", ipBox.Text)));
 
                 viwersClient.Open();
 

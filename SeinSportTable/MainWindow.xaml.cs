@@ -33,8 +33,8 @@ namespace SeinSportTable
         {
             if (host == null)
             {
-                host = new ServiceHost(typeof(SportService), new Uri(string.Format("http://{0}:8098/Sport", ipBox.Text)));
-                host.AddServiceEndpoint(typeof(ISportService), new WSHttpBinding(), string.Format("http://{0}:8098/Sport", ipBox.Text));
+                host = new ServiceHost(typeof(SportService), new Uri(string.Format("http://{0}:8097/Sport", ipBox.Text)));
+                host.AddServiceEndpoint(typeof(ISportService), new WSHttpBinding(), string.Format("http://{0}:8097/Sport", ipBox.Text));
                 
             }
 
