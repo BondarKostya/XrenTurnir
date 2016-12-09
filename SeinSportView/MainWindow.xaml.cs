@@ -48,7 +48,9 @@ namespace SeinSportView
             if (time == 0)
             {
                 timerBlock.Text = "Время вышло";
+                secondBlock.Text = "";
                 timer.Stop();
+                return;
             }
 
             time--;
@@ -68,12 +70,13 @@ namespace SeinSportView
         private void SportService_OnNewChampion(Data obj)
         {
             this.DataContext = obj;
-            timerBlock.Text = "60";       
+            timerBlock.Text = "60";
+            secondBlock.Text = "c";
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            host.Close();
+            host?.Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
